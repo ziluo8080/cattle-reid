@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "sha256": "54466483012b575514a6dae887a9ab33ea77917f001a95e91be5bd1285b91be6",
+    "records": 675,
+    "raw_preprocessing": "sideview2026-snapshots-fullbody-letterbox-v1",
+    "resolved_preprocessing": "baseline",
+    "original_bytes_preserved": true
+  },
+  "neutral128": {
+    "sha256": "d0209d624943bfcc845e5a581705c7bed593a946bd70b903b854a51aac73064e",
+    "records": 675,
+    "raw_preprocessing": "sideview2026-snapshots-fullbody-letterbox-v1",
+    "resolved_preprocessing": "neutral128",
+    "original_bytes_preserved": true
+  },
+  "geomalign_v3": {
+    "sha256": "d195a05bafddae34e6e42fc7048dfa250b109549bc0b9a99a411ff4308cb9e19",
+    "records": 675,
+    "raw_preprocessing": "sideview2026-geomalign-v3",
+    "resolved_preprocessing": "geomalign_v3",
+    "original_bytes_preserved": true
+  },
+  "blacktrim_v1": {
+    "sha256": "fbed28302c086ada666a12ae8644a1f9bd0d2f97f6372e81f1d9e2075b4cd56d",
+    "records": 675,
+    "raw_preprocessing": "sideview2026-blacktrim-v1",
+    "resolved_preprocessing": "blacktrim_v1",
+    "original_bytes_preserved": true
+  }
+}

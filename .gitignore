@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.pt
+*.pth
+*.npy
+*.npz
+*.jpg
+*.jpeg
+*.png
+derived/

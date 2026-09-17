@@ -1,0 +1,15 @@
+{
+  "analysis_date": "2026-09-17",
+  "status": "posthoc_exploratory_not_preregistered",
+  "unit": "54 query identity clusters within a fixed 54-candidate gallery",
+  "replicates": 10000,
+  "seed": 20260917,
+  "rng": "PCG64",
+  "interval": "2.5 and 97.5 percentiles; linear quantiles",
+  "pairing": "Same identity indices across all methods, K, preprocessing; retain all 15 models and 5 draws",
+  "estimand": "Micro-accuracy difference conditional on archived models, support draws, candidate gallery and image set",
+  "comparisons": ["B_minus_GAP", "B_minus_SupCon-in", "B_neutral_minus_baseline"],
+  "K": [1, 3, 5],
+  "multiplicity": "Nine exploratory pointwise sensitivity intervals; no familywise claim and no P values",
+  "limitations": ["Gallery is not reconstructed on resampling", "Capture-event independence is unverified", "Does not estimate unseen-farm or newly trained-model generalization", "Preprocessing was selected using external results"]
+}

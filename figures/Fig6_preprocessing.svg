@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="450pt" height="180pt" viewBox="0 0 450 180" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-17T02:17:45.071301</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 180 
+L 450 180 
+L 450 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 121.5 153 
+L 373.5 153 
+L 373.5 30.6 
+L 121.5 30.6 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 123.18 31.824 
+L 203.82 31.824 
+L 203.82 59.976 
+L 123.18 59.976 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #e2ecf1"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 207.18 31.824 
+L 287.82 31.824 
+L 287.82 59.976 
+L 207.18 59.976 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #a1c5d9"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 291.18 31.824 
+L 371.82 31.824 
+L 371.82 59.976 
+L 291.18 59.976 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #78abc6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 123.18 62.424 
+L 203.82 62.424 
+L 203.82 90.576 
+L 123.18 90.576 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #c8dde8"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 207.18 62.424 
+L 287.82 62.424 
+L 287.82 90.576 
+L 207.18 90.576 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #79abc6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 291.18 62.424 
+L 371.82 62.424 
+L 371.82 90.576 
+L 291.18 90.576 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #4e90b2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 123.18 93.024 
+L 203.82 93.024 
+L 203.82 121.176 
+L 123.18 121.176 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #dbe8ef"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 207.18 93.024 
+L 287.82 93.024 
+L 287.82 121.176 
+L 207.18 121.176 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #a0c4d8"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 291.18 93.024 
+L 371.82 93.024 
+L 371.82 121.176 
+L 291.18 121.176 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #7daec8"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 123.18 123.624 
+L 203.82 123.624 
+L 203.82 151.776 
+L 123.18 151.776 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #dfeaf0"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 207.18 123.624 
+L 287.82 123.624 
+L 287.82 151.776 
+L 207.18 151.776 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #a0c4d8"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 291.18 123.624 
+L 371.82 123.624 
+L 371.82 151.776 
+L 291.18 151.776 
+z
+" clip-path="url(#p049da08bb7)" style="fill: #7aacc6"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 418.86 31.824 
+L 430.62 31.824 
+L 430.62 33.048 
+L 418.86 33.048 
+z
+" style="fill: #2878a0"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 418.86 33.02352 
+L 430.62 33.02352 
+L 430.62 34.24752 
+L 418.86 34.24752 
+z
+" style="fill: #2a79a1"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 418.86 34.22304 
+L 430.62 34.22304 
+L 430.62 35.44704 
+L 418.86 35.44704 
+z
+" style="fill: #2d7ba2"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 418.86 35.42256 
+L 430.62 35.42256 
+L 430.62 36.64656 
+L 418.86 36.64656 
+z
+" style="fill: #2f7ca3"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 418.86 36.62208 
+L 430.62 36.62208 
+L 430.62 37.84608 
+L 418.86 37.84608 
+z
+" style="fill: #317ea4"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 418.86 37.8216 
+L 430.62 37.8216 
+L 430.62 39.0456 
+L 418.86 39.0456 
+z
+" style="fill: #337fa5"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 418.86 39.02112 
+L 430.62 39.02112 
+L 430.62 40.24512 
+L 418.86 40.24512 
+z
+" style="fill: #3681a7"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 418.86 40.22064 
+L 430.62 40.22064 
+L 430.62 41.44464 
+L 418.86 41.44464 
+z
+" style="fill: #3983a8"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 418.86 41.42016 
+L 430.62 41.42016 
+L 430.62 42.64416 
+L 418.86 42.64416 
+z
+" style="fill: #3b84a9"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 418.86 42.61968 
+L 430.62 42.61968 
+L 430.62 43.84368 
+L 418.86 43.84368 
+z
+" style="fill: #3e86aa"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 418.86 43.8192 
+L 430.62 43.8192 
+L 430.62 45.0432 
+L 418.86 45.0432 
+z
+" style="fill: #4087ab"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 418.86 45.01872 
+L 430.62 45.01872 
+L 430.62 46.24272 
+L 418.86 46.24272 
+z
+" style="fill: #4389ad"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 418.86 46.21824 
+L 430.62 46.21824 
+L 430.62 47.44224 
+L 418.86 47.44224 
+z
+" style="fill: #458bae"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 418.86 47.41776 
+L 430.62 47.41776 
+L 430.62 48.64176 
+L 418.86 48.64176 
+z
+" style="fill: #478caf"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 418.86 48.61728 
+L 430.62 48.61728 
+L 430.62 49.84128 
+L 418.86 49.84128 
+z
+" style="fill: #4a8eb0"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 418.86 49.8168 
+L 430.62 49.8168 
+L 430.62 51.0408 
+L 418.86 51.0408 
+z
+" style="fill: #4c8fb1"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 418.86 51.01632 
+L 430.62 51.01632 
+L 430.62 52.24032 
+L 418.86 52.24032 
+z
+" style="fill: #4f91b2"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 418.86 52.21584 
+L 430.62 52.21584 
+L 430.62 53.43984 
+L 418.86 53.43984 
+z
+" style="fill: #5192b3"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 418.86 53.41536 
+L 430.62 53.41536 
+L 430.62 54.63936 
+L 418.86 54.63936 
+z
+" style="fill: #5494b5"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 418.86 54.61488 
+L 430.62 54.61488 
+L 430.62 55.83888 
+L 418.86 55.83888 
+z
+" style="fill: #5796b6"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 418.86 55.8144 
+L 430.62 55.8144 
+L 430.62 57.0384 
+L 418.86 57.0384 
+z
+" style="fill: #5897b7"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 418.86 57.01392 
+L 430.62 57.01392 
+L 430.62 58.23792 
+L 418.86 58.23792 
+z
+" style="fill: #5b99b8"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 418.86 58.21344 
+L 430.62 58.21344 
+L 430.62 59.43744 
+L 418.86 59.43744 
+z
+" style="fill: #5d9ab9"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 418.86 59.41296 
+L 430.62 59.41296 
+L 430.62 60.63696 
+L 418.86 60.63696 
+z
+" style="fill: #609cba"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 418.86 60.61248 
+L 430.62 60.61248 
+L 430.62 61.83648 
+L 418.86 61.83648 
+z
+" style="fill: #639dbc"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 418.86 61.812 
+L 430.62 61.812 
+L 430.62 63.036 
+L 418.86 63.036 
+z
+" style="fill: #659fbd"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 418.86 63.01152 
+L 430.62 63.01152 
+L 430.62 64.23552 
+L 418.86 64.23552 
+z
+" style="fill: #68a0be"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 418.86 64.21104 
+L 430.62 64.21104 
+L 430.62 65.43504 
+L 418.86 65.43504 
+z
+" style="fill: #69a2bf"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 418.86 65.41056 
+L 430.62 65.41056 
+L 430.62 66.63456 
+L 418.86 66.63456 
+z
+" style="fill: #6ca3c0"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 418.86 66.61008 
+L 430.62 66.61008 
+L 430.62 67.83408 
+L 418.86 67.83408 
+z
+" style="fill: #6ea5c1"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 418.86 67.8096 
+L 430.62 67.8096 
+L 430.62 69.0336 
+L 418.86 69.0336 
+z
+" style="fill: #71a7c2"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 418.86 69.00912 
+L 430.62 69.00912 
+L 430.62 70.23312 
+L 418.86 70.23312 
+z
+" style="fill: #74a8c4"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 418.86 70.20864 
+L 430.62 70.20864 
+L 430.62 71.43264 
+L 418.86 71.43264 
+z
+" style="fill: #76aac5"/>
+   </g>
+   <g id="patch_48">
+    <path d="M 418.86 71.40816 
+L 430.62 71.40816 
+L 430.62 72.63216 
+L 418.86 72.63216 
+z
+" style="fill: #79abc6"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 418.86 72.60768 
+L 430.62 72.60768 
+L 430.62 73.83168 
+L 418.86 73.83168 
+z
+" style="fill: #7badc7"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 418.86 73.8072 
+L 430.62 73.8072 
+L 430.62 75.0312 
+L 418.86 75.0312 
+z
+" style="fill: #7daec8"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 418.86 75.00672 
+L 430.62 75.00672 
+L 430.62 76.23072 
+L 418.86 76.23072 
+z
+" style="fill: #80b0ca"/>
+   </g>
+   <g id="patch_52">
+    <path d="M 418.86 76.20624 
+L 430.62 76.20624 
+L 430.62 77.43024 
+L 418.86 77.43024 
+z
+" style="fill: #82b1ca"/>
+   </g>
+   <g id="patch_53">
+    <path d="M 418.86 77.40576 
+L 430.62 77.40576 
+L 430.62 78.62976 
+L 418.86 78.62976 
+z
+" style="fill: #85b3cc"/>
+   </g>
+   <g id="patch_54">
+    <path d="M 418.86 78.60528 
+L 430.62 78.60528 
+L 430.62 79.82928 
+L 418.86 79.82928 
+z
+" style="fill: #87b4cd"/>
+   </g>
+   <g id="patch_55">
+    <path d="M 418.86 79.8048 
+L 430.62 79.8048 
+L 430.62 81.0288 
+L 418.86 81.0288 
+z
+" style="fill: #8ab6ce"/>
+   </g>
+   <g id="patch_56">
+    <path d="M 418.86 81.00432 
+L 430.62 81.00432 
+L 430.62 82.22832 
+L 418.86 82.22832 
+z
+" style="fill: #8db8cf"/>
+   </g>
+   <g id="patch_57">
+    <path d="M 418.86 82.20384 
+L 430.62 82.20384 
+L 430.62 83.42784 
+L 418.86 83.42784 
+z
+" style="fill: #8eb9d0"/>
+   </g>
+   <g id="patch_58">
+    <path d="M 418.86 83.40336 
+L 430.62 83.40336 
+L 430.62 84.62736 
+L 418.86 84.62736 
+z
+" style="fill: #91bbd2"/>
+   </g>
+   <g id="patch_59">
+    <path d="M 418.86 84.60288 
+L 430.62 84.60288 
+L 430.62 85.82688 
+L 418.86 85.82688 
+z
+" style="fill: #93bcd3"/>
+   </g>
+   <g id="patch_60">
+    <path d="M 418.86 85.8024 
+L 430.62 85.8024 
+L 430.62 87.0264 
+L 418.86 87.0264 
+z
+" style="fill: #96bed4"/>
+   </g>
+   <g id="patch_61">
+    <path d="M 418.86 87.00192 
+L 430.62 87.00192 
+L 430.62 88.22592 
+L 418.86 88.22592 
+z
+" style="fill: #98bfd5"/>
+   </g>
+   <g id="patch_62">
+    <path d="M 418.86 88.20144 
+L 430.62 88.20144 
+L 430.62 89.42544 
+L 418.86 89.42544 
+z
+" style="fill: #9bc1d6"/>
+   </g>
+   <g id="patch_63">
+    <path d="M 418.86 89.40096 
+L 430.62 89.40096 
+L 430.62 90.62496 
+L 418.86 90.62496 
+z
+" style="fill: #9ec3d7"/>
+   </g>
+   <g id="patch_64">
+    <path d="M 418.86 90.60048 
+L 430.62 90.60048 
+L 430.62 91.82448 
+L 418.86 91.82448 
+z
+" style="fill: #a0c4d8"/>
+   </g>
+   <g id="patch_65">
+    <path d="M 418.86 91.8 
+L 430.62 91.8 
+L 430.62 93.024 
+L 418.86 93.024 
+z
+" style="fill: #a2c6d9"/>
+   </g>
+   <g id="patch_66">
+    <path d="M 418.86 92.99952 
+L 430.62 92.99952 
+L 430.62 94.22352 
+L 418.86 94.22352 
+z
+" style="fill: #a3c6da"/>
+   </g>
+   <g id="patch_67">
+    <path d="M 418.86 94.19904 
+L 430.62 94.19904 
+L 430.62 95.42304 
+L 418.86 95.42304 
+z
+" style="fill: #a5c7db"/>
+   </g>
+   <g id="patch_68">
+    <path d="M 418.86 95.39856 
+L 430.62 95.39856 
+L 430.62 96.62256 
+L 418.86 96.62256 
+z
+" style="fill: #a7c9db"/>
+   </g>
+   <g id="patch_69">
+    <path d="M 418.86 96.59808 
+L 430.62 96.59808 
+L 430.62 97.82208 
+L 418.86 97.82208 
+z
+" style="fill: #a8c9dc"/>
+   </g>
+   <g id="patch_70">
+    <path d="M 418.86 97.7976 
+L 430.62 97.7976 
+L 430.62 99.0216 
+L 418.86 99.0216 
+z
+" style="fill: #aacadc"/>
+   </g>
+   <g id="patch_71">
+    <path d="M 418.86 98.99712 
+L 430.62 98.99712 
+L 430.62 100.22112 
+L 418.86 100.22112 
+z
+" style="fill: #abcbdd"/>
+   </g>
+   <g id="patch_72">
+    <path d="M 418.86 100.19664 
+L 430.62 100.19664 
+L 430.62 101.42064 
+L 418.86 101.42064 
+z
+" style="fill: #adccde"/>
+   </g>
+   <g id="patch_73">
+    <path d="M 418.86 101.39616 
+L 430.62 101.39616 
+L 430.62 102.62016 
+L 418.86 102.62016 
+z
+" style="fill: #aecdde"/>
+   </g>
+   <g id="patch_74">
+    <path d="M 418.86 102.59568 
+L 430.62 102.59568 
+L 430.62 103.81968 
+L 418.86 103.81968 
+z
+" style="fill: #b0cedf"/>
+   </g>
+   <g id="patch_75">
+    <path d="M 418.86 103.7952 
+L 430.62 103.7952 
+L 430.62 105.0192 
+L 418.86 105.0192 
+z
+" style="fill: #b2cfdf"/>
+   </g>
+   <g id="patch_76">
+    <path d="M 418.86 104.99472 
+L 430.62 104.99472 
+L 430.62 106.21872 
+L 418.86 106.21872 
+z
+" style="fill: #b4d0e0"/>
+   </g>
+   <g id="patch_77">
+    <path d="M 418.86 106.19424 
+L 430.62 106.19424 
+L 430.62 107.41824 
+L 418.86 107.41824 
+z
+" style="fill: #b5d1e1"/>
+   </g>
+   <g id="patch_78">
+    <path d="M 418.86 107.39376 
+L 430.62 107.39376 
+L 430.62 108.61776 
+L 418.86 108.61776 
+z
+" style="fill: #b7d2e1"/>
+   </g>
+   <g id="patch_79">
+    <path d="M 418.86 108.59328 
+L 430.62 108.59328 
+L 430.62 109.81728 
+L 418.86 109.81728 
+z
+" style="fill: #b9d3e2"/>
+   </g>
+   <g id="patch_80">
+    <path d="M 418.86 109.7928 
+L 430.62 109.7928 
+L 430.62 111.0168 
+L 418.86 111.0168 
+z
+" style="fill: #bad4e3"/>
+   </g>
+   <g id="patch_81">
+    <path d="M 418.86 110.99232 
+L 430.62 110.99232 
+L 430.62 112.21632 
+L 418.86 112.21632 
+z
+" style="fill: #bcd5e3"/>
+   </g>
+   <g id="patch_82">
+    <path d="M 418.86 112.19184 
+L 430.62 112.19184 
+L 430.62 113.41584 
+L 418.86 113.41584 
+z
+" style="fill: #bed6e4"/>
+   </g>
+   <g id="patch_83">
+    <path d="M 418.86 113.39136 
+L 430.62 113.39136 
+L 430.62 114.61536 
+L 418.86 114.61536 
+z
+" style="fill: #bfd7e4"/>
+   </g>
+   <g id="patch_84">
+    <path d="M 418.86 114.59088 
+L 430.62 114.59088 
+L 430.62 115.81488 
+L 418.86 115.81488 
+z
+" style="fill: #c1d8e5"/>
+   </g>
+   <g id="patch_85">
+    <path d="M 418.86 115.7904 
+L 430.62 115.7904 
+L 430.62 117.0144 
+L 418.86 117.0144 
+z
+" style="fill: #c3d9e6"/>
+   </g>
+   <g id="patch_86">
+    <path d="M 418.86 116.98992 
+L 430.62 116.98992 
+L 430.62 118.21392 
+L 418.86 118.21392 
+z
+" style="fill: #c4dae6"/>
+   </g>
+   <g id="patch_87">
+    <path d="M 418.86 118.18944 
+L 430.62 118.18944 
+L 430.62 119.41344 
+L 418.86 119.41344 
+z
+" style="fill: #c6dbe7"/>
+   </g>
+   <g id="patch_88">
+    <path d="M 418.86 119.38896 
+L 430.62 119.38896 
+L 430.62 120.61296 
+L 418.86 120.61296 
+z
+" style="fill: #c7dce7"/>
+   </g>
+   <g id="patch_89">
+    <path d="M 418.86 120.58848 
+L 430.62 120.58848 
+L 430.62 121.81248 
+L 418.86 121.81248 
+z
+" style="fill: #c9dde8"/>
+   </g>
+   <g id="patch_90">
+    <path d="M 418.86 121.788 
+L 430.62 121.788 
+L 430.62 123.012 
+L 418.86 123.012 
+z
+" style="fill: #cadee8"/>
+   </g>
+   <g id="patch_91">
+    <path d="M 418.86 122.98752 
+L 430.62 122.98752 
+L 430.62 124.21152 
+L 418.86 124.21152 
+z
+" style="fill: #ccdfe9"/>
+   </g>
+   <g id="patch_92">
+    <path d="M 418.86 124.18704 
+L 430.62 124.18704 
+L 430.62 125.41104 
+L 418.86 125.41104 
+z
+" style="fill: #cee0ea"/>
+   </g>
+   <g id="patch_93">
+    <path d="M 418.86 125.38656 
+L 430.62 125.38656 
+L 430.62 126.61056 
+L 418.86 126.61056 
+z
+" style="fill: #cfe1ea"/>
+   </g>
+   <g id="patch_94">
+    <path d="M 418.86 126.58608 
+L 430.62 126.58608 
+L 430.62 127.81008 
+L 418.86 127.81008 
+z
+" style="fill: #d1e2eb"/>
+   </g>
+   <g id="patch_95">
+    <path d="M 418.86 127.7856 
+L 430.62 127.7856 
+L 430.62 129.0096 
+L 418.86 129.0096 
+z
+" style="fill: #d2e3eb"/>
+   </g>
+   <g id="patch_96">
+    <path d="M 418.86 128.98512 
+L 430.62 128.98512 
+L 430.62 130.20912 
+L 418.86 130.20912 
+z
+" style="fill: #d4e4ec"/>
+   </g>
+   <g id="patch_97">
+    <path d="M 418.86 130.18464 
+L 430.62 130.18464 
+L 430.62 131.40864 
+L 418.86 131.40864 
+z
+" style="fill: #d6e5ed"/>
+   </g>
+   <g id="patch_98">
+    <path d="M 418.86 131.38416 
+L 430.62 131.38416 
+L 430.62 132.60816 
+L 418.86 132.60816 
+z
+" style="fill: #d7e6ed"/>
+   </g>
+   <g id="patch_99">
+    <path d="M 418.86 132.58368 
+L 430.62 132.58368 
+L 430.62 133.80768 
+L 418.86 133.80768 
+z
+" style="fill: #d9e7ee"/>
+   </g>
+   <g id="patch_100">
+    <path d="M 418.86 133.7832 
+L 430.62 133.7832 
+L 430.62 135.0072 
+L 418.86 135.0072 
+z
+" style="fill: #dae7ef"/>
+   </g>
+   <g id="patch_101">
+    <path d="M 418.86 134.98272 
+L 430.62 134.98272 
+L 430.62 136.20672 
+L 418.86 136.20672 
+z
+" style="fill: #dce9ef"/>
+   </g>
+   <g id="patch_102">
+    <path d="M 418.86 136.18224 
+L 430.62 136.18224 
+L 430.62 137.40624 
+L 418.86 137.40624 
+z
+" style="fill: #dee9f0"/>
+   </g>
+   <g id="patch_103">
+    <path d="M 418.86 137.38176 
+L 430.62 137.38176 
+L 430.62 138.60576 
+L 418.86 138.60576 
+z
+" style="fill: #dfeaf0"/>
+   </g>
+   <g id="patch_104">
+    <path d="M 418.86 138.58128 
+L 430.62 138.58128 
+L 430.62 139.80528 
+L 418.86 139.80528 
+z
+" style="fill: #e1ecf1"/>
+   </g>
+   <g id="patch_105">
+    <path d="M 418.86 139.7808 
+L 430.62 139.7808 
+L 430.62 141.0048 
+L 418.86 141.0048 
+z
+" style="fill: #e3ecf2"/>
+   </g>
+   <g id="patch_106">
+    <path d="M 418.86 140.98032 
+L 430.62 140.98032 
+L 430.62 142.20432 
+L 418.86 142.20432 
+z
+" style="fill: #e4edf2"/>
+   </g>
+   <g id="patch_107">
+    <path d="M 418.86 142.17984 
+L 430.62 142.17984 
+L 430.62 143.40384 
+L 418.86 143.40384 
+z
+" style="fill: #e6eef3"/>
+   </g>
+   <g id="patch_108">
+    <path d="M 418.86 143.37936 
+L 430.62 143.37936 
+L 430.62 144.60336 
+L 418.86 144.60336 
+z
+" style="fill: #e8eff3"/>
+   </g>
+   <g id="patch_109">
+    <path d="M 418.86 144.57888 
+L 430.62 144.57888 
+L 430.62 145.80288 
+L 418.86 145.80288 
+z
+" style="fill: #e9f0f4"/>
+   </g>
+   <g id="patch_110">
+    <path d="M 418.86 145.7784 
+L 430.62 145.7784 
+L 430.62 147.0024 
+L 418.86 147.0024 
+z
+" style="fill: #ebf1f5"/>
+   </g>
+   <g id="patch_111">
+    <path d="M 418.86 146.97792 
+L 430.62 146.97792 
+L 430.62 148.20192 
+L 418.86 148.20192 
+z
+" style="fill: #edf2f5"/>
+   </g>
+   <g id="patch_112">
+    <path d="M 418.86 148.17744 
+L 430.62 148.17744 
+L 430.62 149.40144 
+L 418.86 149.40144 
+z
+" style="fill: #eef3f6"/>
+   </g>
+   <g id="patch_113">
+    <path d="M 418.86 149.37696 
+L 430.62 149.37696 
+L 430.62 150.60096 
+L 418.86 150.60096 
+z
+" style="fill: #f0f4f7"/>
+   </g>
+   <g id="patch_114">
+    <path d="M 418.86 150.57648 
+L 430.62 150.57648 
+L 430.62 151.80048 
+L 418.86 151.80048 
+z
+" style="fill: #f1f5f7"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 7.5px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle" x="163.5" y="19.699365" transform="rotate(-0 163.5 19.699365)">K = 1</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 7.5px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle" x="247.5" y="19.699365" transform="rotate(-0 247.5 19.699365)">K = 3</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 7.5px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle" x="331.5" y="19.699365" transform="rotate(-0 331.5 19.699365)">K = 5</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: end" x="112.5" y="49.23375" transform="rotate(-0 112.5 49.23375)">原始 letterbox</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: end" x="112.5" y="79.818125" transform="rotate(-0 112.5 79.818125)">灰背景</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: end" x="112.5" y="110.348047" transform="rotate(-0 112.5 110.348047)">geomalign-v3</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: end" x="112.5" y="140.948047" transform="rotate(-0 112.5 140.948047)">blacktrim-v1</text>
+     </g>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="163.5" y="48.413672" transform="rotate(-0 163.5 48.413672)">46.90</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="247.5" y="48.413672" transform="rotate(-0 247.5 48.413672)">55.07</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="331.5" y="48.413672" transform="rotate(-0 331.5 48.413672)">58.36</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="163.5" y="79.013672" transform="rotate(-0 163.5 79.013672)">50.10</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="247.5" y="79.013672" transform="rotate(-0 247.5 79.013672)">58.35</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="331.5" y="79.013672" transform="rotate(-0 331.5 79.013672)">61.82</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="163.5" y="109.613672" transform="rotate(-0 163.5 109.613672)">47.76</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="247.5" y="109.613672" transform="rotate(-0 247.5 109.613672)">55.14</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="331.5" y="109.613672" transform="rotate(-0 331.5 109.613672)">57.95</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="163.5" y="140.213672" transform="rotate(-0 163.5 140.213672)">47.24</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="247.5" y="140.213672" transform="rotate(-0 247.5 140.213672)">55.14</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #222222" x="331.5" y="140.213672" transform="rotate(-0 331.5 140.213672)">58.25</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7.5px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: start; fill: #222222" x="439.02" y="34.964766" transform="rotate(-0 439.02 34.964766)">65</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7.5px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: start; fill: #222222" x="439.02" y="154.257305" transform="rotate(-0 439.02 154.257305)">45</text>
+   </g>
+  </g>
+  <g id="text_22">
+   <text style="font-size: 8px; font-family: 'Microsoft YaHei', 'Arial', sans-serif; text-anchor: middle; fill: #70777d" x="243" y="172.8" transform="rotate(-0 243 172.8)">B 的微平均准确率 (%)</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p049da08bb7">
+   <rect x="121.5" y="30.6" width="252" height="122.4"/>
+  </clipPath>
+ </defs>
+</svg>

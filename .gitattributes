@@ -1,0 +1,2 @@
+# Preserve archived bytes so MANIFEST SHA256 is stable on Windows and Linux.
+* -text

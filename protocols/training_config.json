@@ -1,0 +1,174 @@
+{
+  "backbone": "torchvision DenseNet-121",
+  "pretrained_weights": "IMAGENET1K_V1 / densenet121-a639ec97.pth",
+  "pretrained_sha256": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395",
+  "embedding_dimension": 1024,
+  "trainable": "All convolution and BatchNorm affine parameters in feature extractor; classifier removed",
+  "batch_norm": "Running statistics fixed in train and evaluation",
+  "dropout": 0,
+  "optimizer": "AdamW",
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "betas": [
+    0.9,
+    0.999
+  ],
+  "epsilon": 1e-08,
+  "amsgrad": false,
+  "foreach": false,
+  "fused": false,
+  "gradient_clip_norm": 1,
+  "schedule": "Per-update linear warmup 42 updates, cosine decay to zero at update 630",
+  "epochs": 30,
+  "evaluation_epochs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "updates_per_epoch": 21,
+  "updates_per_model": 630,
+  "batch_images": 60,
+  "queries": 10,
+  "identities_per_episode": 10,
+  "supports_per_identity": 5,
+  "temperature": 0.1,
+  "loss_denominator": 10,
+  "support_gradients": true,
+  "augmentations": [],
+  "precision": "FP32; no AMP; TF32 disabled",
+  "preprocessing": "RGB; short edge 256 bilinear; center crop 224; ImageNet mean/std",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "folds": 5,
+  "selected": "Highest validation identity-macro Rank-1 K5 over epochs 0..30; earliest tie",
+  "selection_note": "Validation 10-way tasks; full-validation check after selection does not reselect model",
+  "historical_runtime": "2.7.1+cu126",
+  "source_bindings": [
+    {
+      "release": "b_release.json",
+      "file": "scripts/run_densenet_pairwise_train.py",
+      "sha256": "f517f914c665c97d3b79bae974867e1e378c4ebb7f040d3d74d3ebc2084b9393"
+    },
+    {
+      "release": "b_release.json",
+      "file": "scripts/run_densenet_pooling_probe.py",
+      "sha256": "70aff17b23c900d824c3540816e5232cad55d8419d5bea86a2fe2494af140b8c"
+    },
+    {
+      "release": "b_release.json",
+      "file": "scripts/run_strong_rgb.py",
+      "sha256": "6c4f7c1a82507dfbc52b7c86c63e1269871a7059c5bdb05ee29ba6b99258956c"
+    },
+    {
+      "release": "b_release.json",
+      "file": "scripts/validate_strong_rgb.py",
+      "sha256": "313d57a0e6884e0309c7385d23ae8f4f48c78e431c4f9d910d543f56f73def51"
+    },
+    {
+      "release": "b_release.json",
+      "file": "src/cattle_reid_gate0/controlled_adapter_training.py",
+      "sha256": "356ccbc4ec378bbf41db7f09ce37eef3b83c194b5a8f5e87e1b85260a07fa532"
+    },
+    {
+      "release": "b_release.json",
+      "file": "src/cattle_reid_gate0/densenet_pairwise.py",
+      "sha256": "c16836af32d222ad4aafe716e65b615320cc123dafe94aea5889340daf52af25"
+    },
+    {
+      "release": "b_release.json",
+      "file": "src/cattle_reid_gate0/strong_rgb_densenet.py",
+      "sha256": "509242a7137cace4f54dd8e2435334432fbc4bd4e365755c5d4857d833aee501"
+    },
+    {
+      "release": "gap_release.json",
+      "file": "scripts/run_strong_rgb.py",
+      "sha256": "6c4f7c1a82507dfbc52b7c86c63e1269871a7059c5bdb05ee29ba6b99258956c"
+    },
+    {
+      "release": "gap_release.json",
+      "file": "scripts/validate_strong_rgb.py",
+      "sha256": "313d57a0e6884e0309c7385d23ae8f4f48c78e431c4f9d910d543f56f73def51"
+    },
+    {
+      "release": "gap_release.json",
+      "file": "src/cattle_reid_gate0/controlled_adapter_training.py",
+      "sha256": "356ccbc4ec378bbf41db7f09ce37eef3b83c194b5a8f5e87e1b85260a07fa532"
+    },
+    {
+      "release": "gap_release.json",
+      "file": "src/cattle_reid_gate0/strong_rgb_densenet.py",
+      "sha256": "509242a7137cace4f54dd8e2435334432fbc4bd4e365755c5d4857d833aee501"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "scripts/run_densenet_pooling_probe.py",
+      "sha256": "70aff17b23c900d824c3540816e5232cad55d8419d5bea86a2fe2494af140b8c"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "scripts/run_strong_rgb.py",
+      "sha256": "6c4f7c1a82507dfbc52b7c86c63e1269871a7059c5bdb05ee29ba6b99258956c"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "scripts/run_supcon_in_cloud.py",
+      "sha256": "93e2854d9510311337bb2b3dcd0f5850d895acce5433def2b12dc41592f6a592"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "scripts/supcon_in.py",
+      "sha256": "5e1ba277aac7f3809b378b540e61ff868e3deae7e634911d117a63912a9704be"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "scripts/validate_strong_rgb.py",
+      "sha256": "313d57a0e6884e0309c7385d23ae8f4f48c78e431c4f9d910d543f56f73def51"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "src/cattle_reid_gate0/controlled_adapter_training.py",
+      "sha256": "356ccbc4ec378bbf41db7f09ce37eef3b83c194b5a8f5e87e1b85260a07fa532"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "src/cattle_reid_gate0/densenet_pairwise.py",
+      "sha256": "c16836af32d222ad4aafe716e65b615320cc123dafe94aea5889340daf52af25"
+    },
+    {
+      "release": "supcon_release.json",
+      "file": "src/cattle_reid_gate0/strong_rgb_densenet.py",
+      "sha256": "509242a7137cace4f54dd8e2435334432fbc4bd4e365755c5d4857d833aee501"
+    }
+  ]
+}
