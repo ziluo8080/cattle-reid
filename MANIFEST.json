@@ -48,8 +48,8 @@
     "protocols/sideview_manifest.jsonl": "32337ea7ad322a195716708b11794eca70f676de1a55ca11cdf41669b1c7aa2f",
     "protocols/sideview_protocol.json": "810d251326b381eda3e1e3160e3f8ac28a6e3d6dde39a51f85ddf7ee98e032d8",
     "protocols/training_config.json": "0ae13b3a1be41f1a33f378345b2f6d9a256e02f344c140fe46aaaacf77f14951",
-    "README.md": "3aa0640d8d8c9e313334ef42deb8c1362fafc42bd020a61de18a4f48fdc915f5",
-    "README.zh-CN.md": "3f4b5c6e6c741e6fedc5a3298fc7d79b8467d28d27523f4ec088bce3c877dde6",
+    "README.md": "478c7b06aedf1a51c690841f7c23dc5143f8dabd78c01caa2c73a426a0e2677e",
+    "README.zh-CN.md": "e3a772c87bda8c24fa41f7bf4d3ca0f0476e72818d22c2d383801b0c8f361999",
     "reference_pipeline/build_sideview_snapshot_protocol.py": "be9f43b78d33db462f5ac59d759d18aa4934cbb5d501209e214b889b673c8a87",
     "reference_pipeline/prepare_sideview2026_blacktrim_v1.py": "c1285179f38d16f6bc898407ae40a60403a4c6ab0004e0435c98b1a3ebbc25b6",
     "reference_pipeline/prepare_sideview2026_geomalign_v3.py": "8e2d029ea8423ab3ea152ccabde2abbf8c5e47e9f33e82c3f4b7e77911cba4c4",
@@ -104,5 +104,5 @@
     "tests/test_results.py": "6c8f9a190823956f824cdf37af2dd23057886431892616eb2ecca5885b45da3c",
     "tests/test_scoring.py": "dec1bcd7630a604e81a7b80accc6fc6de71ccce3541eed4adc380e58f2297df8"
   },
-  "documentation_revision": "data-directory-entry-20260917"
+  "documentation_revision": "readme-structure-and-workflows-20260917"
 }

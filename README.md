@@ -6,6 +6,127 @@ Code, protocols and historical results for Holstein full-candidate recognition a
 
 **New: datasets and all 45 frozen weights are now attached to the [reproduction asset release](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0). Start with the [clean-checkout, end-to-end instructions](docs/END_TO_END.md): download, checksum, reconstruct inputs, replay reference scores, run frozen inference, or retrain.**
 
+## Contents
+
+[Project structure](#project-structure) | [Quick start](#quick-start) | [Reproduction scope](#1-start-here-what-can-be-reproduced) | [Environment](#2-software-and-compute) | [Tables and figures](#3-reproduce-published-tables-and-figures-offline) | [Datasets](#4-data-acquisition-and-layout) | [Preprocessing](#5-image-preprocessing) | [Inference and training](#6-frozen-model-inference) | [Protocol](#7-experimental-protocol-and-training-configuration) | [Results](#8-reference-results) | [Limitations](#9-scientific-limitations) | [Troubleshooting](#10-troubleshooting) | [Citation and contributions](#11-citation-and-contributions)
+
+## Project Structure
+
+The tree below describes the checked-in repository; related files are grouped with `*` for readability. Downloaded assets and generated outputs are shown separately. Run supported commands from the repository root, not from `scripts/`.
+
+```text
+cattle-reid/
+|-- README.md / README.zh-CN.md       # English / Chinese entry points
+|-- LICENSE                          # Code license
+|-- DATA_SOURCES.md                   # Original publishers and dataset scope
+|-- DATA_LICENSES.md                  # Dataset licenses and attribution
+|-- REPRODUCIBILITY.md                # Evidence and analysis conventions
+|-- MANIFEST.json                     # Checksums for archived repository files
+|-- requirements.txt                 # Result analysis and plotting dependencies
+|-- requirements-inference.txt       # Pinned NumPy/Pillow; install torch separately
+|-- data/
+|   `-- README.md                    # Asset download and local storage instructions
+|-- docs/
+|   |-- END_TO_END.md                 # Complete English reproduction workflow
+|   |-- END_TO_END.zh-CN.md           # Equivalent Chinese workflow
+|   `-- REPRODUCTION_STATUS.md        # Tested steps and remaining verification limits
+|-- scripts/                         # Supported runnable entry points
+|   |-- fetch_assets.py              # Download, checksum and extract Release assets
+|   |-- fetch_initialization.py      # Obtain original ImageNet initialization
+|   |-- holstein.py                  # Prepare / verify-protocol / replay / train / score
+|   |-- prepare_sideview.py           # Rebuild four SideView input variants
+|   |-- score_sideview.py             # Frozen inference with fixed tasks
+|   |-- reproduce_results.py          # Verify archived counts, tables and checksums
+|   |-- identity_sensitivity.py       # Conditional paired identity resampling
+|   `-- plot_paper_figures.py         # Recreate six paper figures
+|-- src/cattle_reid_repro/             # Scientific implementation used by launchers
+|   |-- densenet_pairwise.py          # Pairwise objective computations
+|   |-- strong_rgb_densenet.py        # RGB encoder implementation
+|   |-- supcon_in.py                  # SupCon-in objective
+|   |-- legacy_math.py               # Preserved numerical helper functions
+|   `-- evaluation_artifacts.py      # Load and validate evaluation artifacts
+|-- protocols/                       # Fixed inputs to reproduction, not run outputs
+|   |-- holstein/                    # Design, contract, image indices and task files
+|   |-- holstein_manifest.csv        # Original RGB paths and hashes
+|   |-- holstein_reference_scores.json
+|   |-- sideview_manifest.jsonl      # Ordered list of 607 source images
+|   |-- sideview_protocol.json       # Identity eligibility, supports and queries
+|   |-- models.json                  # 45 checkpoint names, hashes and selected epochs
+|   |-- training_config.json         # Actual historical training configuration
+|   |-- environment.json             # Recorded software and hardware
+|   |-- release_assets.json          # Attachment filenames, sizes and SHA256
+|   |-- result_provenance.json        # Historical result-to-preprocessing mapping
+|   |-- sensitivity_plan.json        # Fixed statistical analysis settings
+|   `-- *verification.json / scientific_function_sources.json
+|-- results/sideview/                 # Unchanged historical result counts
+|   `-- baseline.json / neutral128.json / geomalign_v3.json / blacktrim_v1.json
+|-- tables/                          # Machine-readable evidence and paper tables
+|   |-- holstein_main_reported.csv / holstein_per_model.csv
+|   |-- holstein_candidate_k.csv / holstein_date_k.csv
+|   |-- holstein_cohort_383.csv / holstein_actual_split_1620.csv
+|   |-- holstein_fold_counts.csv / model_lineage_45.csv
+|   |-- sideview_verified.csv / sideview_all_available.csv
+|   `-- sideview_identity_sensitivity.csv / training_consumption_45.csv
+|-- figures/                         # Six archived figure sets, each SVG + PDF
+|-- reference_pipeline/              # Historical preprocessing/scoring evidence
+|-- reference_training/              # Historical training source evidence
+`-- tests/                           # Four unittest modules, including protocol checks
+```
+
+After downloading assets and running the commands below, the **local, Git-ignored** layout is:
+
+```text
+data/assets/
+|-- holstein-Raw.zip                  # Original Holstein archive; read directly
+|-- holstein-timestamp.xlsx           # Original timestamp metadata
+|-- sideview-snapshots.zip            # Experiment's images and official masks
+|-- cattle-reid-checkpoints-v1.zip
+|-- holstein-reference-scores.zip
+|-- checkpoints/                     # 45 original trained state dictionaries
+|-- holstein-reference-scores/        # 45 archived NPY score matrices
+`-- densenet121-a639ec97.pth           # Separate download, only needed for retraining
+derived/
+|-- holstein-input/                  # Reconstructed Holstein arrays and receipt
+|-- inputs/neutral128/               # SideView uint8 array and processing receipt
+|-- holstein-reference-replay/        # Recomputed summary from historical matrices
+|-- holstein-new-scores/              # New frozen Holstein inference output
+|-- sideview-neutral128-new-scores/   # New frozen SideView inference output
+|-- training/                        # New training jobs, never historical weights
+|-- figures/                         # Regenerated SVG/PDF and PNG previews
+`-- identity_sensitivity.csv         # Regenerated sensitivity estimates
+```
+
+`data/` therefore exists in Git, but its large assets are delivered through Release. Cloning is not downloading the datasets. Do not move new predictions into `results/`, change the fixed image order, or use historical reference scripts as portable launchers.
+
+## Quick Start
+
+Choose the path matching your goal. These are separate levels of reproduction, not equivalent evidence:
+
+| Goal | Steps | GPU / large downloads |
+| --- | --- | --- |
+| Check the reported numbers | Clone; run `python scripts/reproduce_results.py` | Neither; standard Python only |
+| Recreate tables and figures | Install analysis dependencies; follow section 3 | No GPU; no image archives |
+| Replay original Holstein predictions | Install inference dependencies; fetch assets; run `holstein.py replay` | No GPU inference; reference matrices required |
+| Recompute predictions from images | Install CUDA environment; fetch assets; prepare inputs; score | GPU recommended for Holstein and required by the SideView entry point |
+| Retrain the study models | Complete input setup; fetch initialization; run training and rescoring | 45 training jobs for the full study; see section 6 |
+
+The minimum first check, after cloning and changing into this repository, is:
+
+```bash
+python scripts/reproduce_results.py
+```
+
+For the full workflow, first install the environment in section 2, then authenticate GitHub CLI and obtain the assets:
+
+```bash
+gh auth login
+python scripts/fetch_assets.py --output data/assets --extract
+python scripts/holstein.py verify-protocol
+python scripts/holstein.py replay --scores data/assets/holstein-reference-scores --output derived/holstein-reference-replay
+```
+
+Plan for at least 10 GB of working storage for downloads, extracted checkpoints, inputs and inference outputs, and additional storage for retraining. This is a planning allowance, not a measured peak. For a command-by-command walkthrough, read [END_TO_END.md](docs/END_TO_END.md).
+
 ## 1. Start Here: What Can Be Reproduced?
 
 ### Where are the datasets?
@@ -42,7 +163,7 @@ Do not interpret count verification as end-to-end experimental reproduction. Por
 | NumPy | 2.2.6 |
 | Pillow | 11.3.0 |
 | Training arithmetic | FP32; no AMP; TF32 disabled |
-| Frozen inference batch size | 64 |
+| Frozen inference batch size | Holstein: 1; SideView: 64 |
 
 Exact CPU model, host RAM, NVIDIA driver, Linux distribution, peak GPU memory and full-study wall-clock/GPU-hours have not been recovered as a complete verified record. They are not invented here. The `cu126` wheel build is not a claim that a separately installed CUDA toolkit had the same version.
 
@@ -149,6 +270,39 @@ The second command is a new inference job, not a table-only check. It performs n
 
 **Scoring rule:** normalize each image embedding; average the K support embeddings for an identity; take the dot product with the normalized query. **Do not normalize the mean support vector again.** This equals mean query-to-support cosine similarity. Candidate order is fixed; NumPy argmax selects the first maximum on a tie.
 
+### Holstein: rebuild inputs and rescore
+
+After asset extraction, use these paths directly:
+
+```bash
+python scripts/holstein.py prepare --raw-zip data/assets/holstein-Raw.zip --output derived/holstein-input
+# Small integration run: only B / fold 0 / seed 17, not all headline results.
+python scripts/holstein.py score --input derived/holstein-input --weights data/assets/checkpoints --method B --fold 0 --seed 17 --output derived/holstein-B-fold0-seed17
+# Full frozen evaluation: 3 methods x 5 folds x 3 seeds.
+python scripts/holstein.py score --input derived/holstein-input --weights data/assets/checkpoints --output derived/holstein-new-scores
+```
+
+The full run writes `summary.json`; compare it against the reference replay, not a single model's result. Holstein uses single-image encoding and CPU pairwise scoring. SideView uses batched encoding and the mean-cosine rule above; do not interchange their numerical reduction paths.
+
+### Retraining is optional, not part of external inference
+
+To reproduce training, first download the exact ImageNet initialization and run a preflight. **Do not train on SideView.** Its role here is frozen-model transfer.
+
+```bash
+python scripts/fetch_initialization.py --output data/assets/densenet121-a639ec97.pth
+python scripts/holstein.py train --input derived/holstein-input --init-weight data/assets/densenet121-a639ec97.pth --method B --fold 0 --seed 17 --output derived/training/B-fold0-seed17 --check-only
+# Remove --check-only to actually train this model.
+```
+
+Repeat training for methods `B`, `GAP`, `SupCon-in`, folds `0..4` and seeds `17,29,43`, keeping output names `<method>-fold<fold>-seed<seed>`. The complete Bash loop is in [the end-to-end guide](docs/END_TO_END.md). Once all 45 jobs complete:
+
+```bash
+python scripts/holstein.py score --input derived/holstein-input --trained-root derived/training --output derived/holstein-retrained-scores
+python scripts/score_sideview.py --input derived/inputs/neutral128 --trained-root derived/training --output derived/sideview-retrained-scores
+```
+
+Each training job records `selected.pt`, `last-state.pt`, `history.json`, epoch validation matrices and `completion.json`. Use `--weights` for archived original checkpoints and `--trained-root` for newly trained job directories; they are mutually exclusive. Training does not implement automatic resume. A saved optimizer/RNG state is not a promise of automatic recovery. Full retraining may differ across environments and has not been rerun as part of packaging.
+
 ## 7. Experimental Protocol and Training Configuration
 
 Holstein retains 324 eligible identities from the 383-identity audit. Use the archived actual splits, not a fresh random split. Five folds x seeds 17/29/43 give 15 frozen models per method. A task uses all 64 or 65 test-fold identities; the headline mixes K=1,3,5 and averages model-level values equally. The 15,735-task workload must not be interpreted as 15,735 independent animals. The 88.00% B result belongs to the 65-candidate/K=5 stratum, not the main pooled endpoint.
@@ -185,20 +339,20 @@ Read the actual source for B/GAP/SupCon-in rather than treating their labels as 
 
 SideView table values are query micro-accuracy averaged over the 15 models and five draws. Identity-macro accuracy is separately reported in `tables/sideview_verified.csv`. Never mix these estimands, or compare different K/candidate counts as a controlled improvement.
 
-## 9. Repository Map and Scientific Limitations
+### Result and figure navigation
 
-```text
-protocols/            image indices, fixed tasks, configuration, checkpoint roster
-results/sideview/     four unchanged historical JSON result files
-tables/              source tables, cohort/split and checkpoint lineage metadata
-scripts/             supported portable CLI entry points
-reference_pipeline/  historical preprocessing/scoring sources, not portable launchers
-reference_training/  verified historical training source excerpts
-figures/             six archived SVG/PDF figure sets
-tests/               verification and preprocessing tests
-derived/             ignored, locally regenerated outputs
-MANIFEST.json        SHA256 inventory (does not hash itself)
-```
+| Question | Archived evidence |
+| --- | --- |
+| Where do Holstein headline values come from? | [Per-model values](tables/holstein_per_model.csv), [main table](tables/holstein_main_reported.csv), and Release score matrices |
+| Why is there also an 88% result? | [Candidate-count / K strata](tables/holstein_candidate_k.csv); not the pooled endpoint |
+| Which animals/images belong to each fold? | [Actual split](tables/holstein_actual_split_1620.csv), [fold counts](tables/holstein_fold_counts.csv) |
+| Where are all SideView preprocessing comparisons? | [Verified micro/macro table](tables/sideview_verified.csv), [available comparisons](tables/sideview_all_available.csv), and `results/sideview/` |
+| How do checkpoints map to training runs? | [Model lineage](tables/model_lineage_45.csv), [checkpoint roster](protocols/models.json) |
+| Which steps were actually checked? | [Verification status](docs/REPRODUCTION_STATUS.md) |
+
+The six SVG/PDF sets cover study protocol, model/scoring structure, Holstein main results, support-count results, SideView transfer and preprocessing comparison. [Figure 1](figures/Fig1_study_protocol.svg) and [Figure 2](figures/Fig2_model_scoring.svg) provide the workflow and model diagrams. These archived paper figures use Chinese labels; the executable workflow is documented in both languages.
+
+## 9. Scientific Limitations
 
 Historical pipeline files contain original workstation/cloud paths and execution guards. Do not directly run them after replacing paths or removing safety gates. Use the portable commands above for the specifically supported steps.
 
@@ -207,6 +361,40 @@ The historical neutral128 JSON mistakenly says letterbox in one metadata field; 
 SideView is a **publicly sourced, reused dataset**, not data collected by this repository's author. Its preprocessing was repeatedly compared using external outcomes. Capture-event independence is unverified. Results are exploratory image-level transfer, not untouched confirmatory external validation. Official identity labels are reused; no independent manual labeling study is claimed.
 
 The original `paper-evidence-v1.0.0` tag remains unchanged. Cite the exact commit of the version you use. Repository code retains MIT licensing; original datasets and pretrained weights retain their own terms. No paper DOI or permanent archive DOI is invented. Repository privacy will be changed only by its owner.
+
+## 10. Troubleshooting
+
+| Symptom | Check or action |
+| --- | --- |
+| Only README exists in `data/` after cloning | Expected: download Release assets; image archives and weights are not ordinary Git files |
+| Private Release returns 404 or an access error | Confirm repository permission and run `gh auth login` normally; never put tokens in files |
+| GitHub CLI is unavailable | Download all five attachments in your signed-in browser into `data/assets/`, then verify offline below |
+| Size, SHA256 or input checks fail | Stop inference; check the asset version, download completeness and modified images; do not disable validation |
+| Output directory already exists | Use a fresh directory to preserve evidence; partial training jobs are not automatically resumed |
+| `torch.cuda.is_available()` is false | Check NVIDIA driver, active Python environment and CUDA wheels; count verification needs no GPU |
+| One model differs from the headline | The headline averages 15 models; check method/fold/seed, K, candidates and micro/macro definitions |
+| Figures show missing glyphs | Install a supported Chinese font and rerun the figure script |
+
+```bash
+python scripts/fetch_assets.py --output data/assets --verify-only --extract
+python scripts/holstein.py --help
+python scripts/holstein.py train --help
+python scripts/score_sideview.py --help
+```
+
+Offline verification does not download missing attachments. The `--help` commands do not train or infer. Individual commands do not require Linux continuation syntax; the complete training loop in the detailed guide uses Bash. Windows users can use Bash or invoke each single-model command separately.
+
+## 11. Citation and Contributions
+
+Code licensing is in [LICENSE](LICENSE); datasets retain the CC0/CC BY 4.0 terms documented in [DATA_LICENSES.md](DATA_LICENSES.md), not the repository's MIT license. Cite original dataset authors, titles and DOIs. For this archive, record the repository URL, actual commit and asset release `reproducibility-v1.2.0`. No published manuscript DOI is available here; no invented BibTeX record is supplied.
+
+```bash
+git rev-parse HEAD
+```
+
+When reporting reproduction issues, include the commit, method/fold/seed/preprocessing, command, Python/torch/torchvision versions, GPU and error log. Exclude credentials and personal access tokens. For code changes, run `python -m unittest discover -s tests`; never edit historical results to make tests pass. Changes to archived tracked files require an explicitly documented revision and corresponding `MANIFEST.json` updates, not substitution of new results for original evidence.
+
+Documentation organization draws on [FastReID](https://github.com/JDAI-CV/fast-reid)'s installation/quick-start/model navigation and [Torchreid](https://github.com/KaiyangZhou/deep-person-reid)'s environment/training/cross-domain evaluation structure. This does not introduce their models, dependencies or experimental claims into this project.
 
 ---
 [Back to top](#holstein-and-sideview-cattle-re-identification) | [切换至中文说明](README.zh-CN.md)
