@@ -2,14 +2,6 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-## Manuscript v9 Update
-
-The [Chinese working manuscript v9](docs/manuscript/manuscript-v9.zh-CN.docx) merges the citation-reviewed draft with the formula/evidence audit. See the [revision record and bibliography](docs/MANUSCRIPT_V9.md). This is a working draft, not a published article.
-
-**Display-name mapping:** restricted **SupCon-out** (short label: SupCon-out) = archived `B` / `B-selected`. This is the existing query-anchor/support-comparison instance of SupCon-out, not a new loss. Commands, checkpoint names, CSV/JSON keys and equation superscript B are unchanged; continue using `--method B`.
-
-The six files in `figures/` now match v9. Figure 6 uses a teal-gray scale and highlights the maximum in each K column: **50.10%, 58.35%, 61.82%**. Emphasis indicates point-estimate maxima, not statistical significance. The portable plotting script reproduces the values and labels in simplified, photograph-free layouts; it is not a pixel-identical reconstruction of the final manuscript artwork. No models were retrained or rescored for this update.
-
 Code, protocols and historical results for Holstein full-candidate recognition and exploratory frozen-model transfer to SideViewCows2026. This is a research reproducibility archive, not a pretrained application. Repository visibility is controlled by its owner; the repository is currently private.
 
 **New: datasets and all 45 frozen weights are now attached to the [reproduction asset release](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0). Start with the [clean-checkout, end-to-end instructions](docs/END_TO_END.md): download, checksum, reconstruct inputs, replay reference scores, run frozen inference, or retrain.**
@@ -76,8 +68,6 @@ cattle-reid/
 |   |-- sideview_verified.csv / sideview_all_available.csv
 |   `-- sideview_identity_sensitivity.csv / training_consumption_45.csv
 |-- figures/                         # Six archived figure sets, each SVG + PDF
-|-- docs/manuscript/                 # Current Chinese Word working manuscript
-|-- docs/MANUSCRIPT_V9.md             # Revision record and merged bibliography
 |-- reference_pipeline/              # Historical preprocessing/scoring evidence
 |-- reference_training/              # Historical training source evidence
 `-- tests/                           # Four unittest modules, including protocol checks

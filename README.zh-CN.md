@@ -2,14 +2,6 @@
 
 [English](README.md) | **简体中文**
 
-## 论文 v9 同步更新
-
-[中文 Word 工作稿 v9](docs/manuscript/manuscript-v9.zh-CN.docx)已合并参考文献核对稿与公式、证据核验稿。修订详情及合并后的参考文献见[版本说明](docs/MANUSCRIPT_V9.md)。这仍是论文工作稿，不是已发表论文。
-
-**名称对应：受限 SupCon-out（图表简称 SupCon-out）= 原归档 `B` / `B-selected`。** 该名称表示查询作为锚点、支持图作为对比集合的既有 SupCon-out 限制实例，不表示提出新的损失函数。命令参数、权重文件名、CSV/JSON字段及公式上标B保持不变，运行时继续使用 `--method B`。
-
-`figures/`中的六组图已与v9同步。图6采用青灰配色，并加粗、描框突出各K列最高点估计：**50.10%、58.35%、61.82%**；强调标记不表示统计显著性。便携绘图脚本重现数据、方法名称及最高值强调，但采用不含照片的简化布局，不是最终论文图的逐像素重建。本次没有重新训练或模型评分。
-
 本仓库整理 Holstein 完整候选识别及 SideViewCows2026 冻结模型迁移实验的代码、协议和历史结果。它是科研复现材料库，不是开箱即用的识别产品。目前仓库为 **private**，可见性由所有者自行管理。
 
 **新增：实际使用的数据包和全部45个冻结权重已上传至[复现附件Release](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0)。请优先阅读[从全新克隆到训练/评分的完整操作说明](docs/END_TO_END.zh-CN.md)，包含下载、校验、输入重建、历史矩阵重放、冻结评分及重新训练命令。**
@@ -76,8 +68,6 @@ cattle-reid/
 |   |-- sideview_verified.csv / sideview_all_available.csv
 |   `-- sideview_identity_sensitivity.csv / training_consumption_45.csv
 |-- figures/                         # 六组归档论文图，每组SVG与PDF各一份
-|-- docs/manuscript/                 # 当前中文Word工作稿
-|-- docs/MANUSCRIPT_V9.md             # 修订记录及合并后的参考文献
 |-- reference_pipeline/              # 历史预处理/评分源码证据
 |-- reference_training/              # 历史训练源码证据
 `-- tests/                           # 四个unittest模块，含协议核验
