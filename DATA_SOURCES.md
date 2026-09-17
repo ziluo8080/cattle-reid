@@ -9,4 +9,4 @@ No original photographs, segmentation masks, ImageNet weights, trained checkpoin
 
 The repository's existing MIT license is retained for repository-authored code and documentation. It does not change the licenses of third-party datasets, pretrained weights or cited publications. The source DOI records remain the authoritative locations for original images and terms.
 
-This GitHub repository is a version-controlled public release, not a claim of DOI-backed permanent preservation. No Zenodo DOI has been minted for this code/result release. Cite the exact release tag and commit; do not invent an archive DOI or paper authorship.
+This GitHub repository is a version-controlled research archive, currently private at the owner's request, not a claim of DOI-backed permanent preservation. No Zenodo DOI has been minted for this code/result release. Cite the exact release tag and commit; do not invent an archive DOI or paper authorship.

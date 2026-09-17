@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-17",
+  "scope": "Rebuilt arrays match preserved local processed inputs; not a replacement for missing historical runtime receipts",
+  "arrays": [
+    {
+      "variant": "baseline",
+      "sha256": "a63b23bdc03fabd72ac8078fddd604ea3ce33991a030116367d214f68b4fa763",
+      "shape": [
+        607,
+        3,
+        224,
+        224
+      ],
+      "matched_existing_local_array": true
+    },
+    {
+      "variant": "neutral128",
+      "sha256": "412aff292c4fbad67a59d1802c0cd3eebabce3fbe947784cbacb7ea29269fb9b",
+      "shape": [
+        607,
+        3,
+        224,
+        224
+      ],
+      "matched_existing_local_array": true
+    },
+    {
+      "variant": "geomalign_v3",
+      "sha256": "ab67a9451ccf4bf37694aa75e18a63ae92da23e37bfbb9c4d35034368340151f",
+      "shape": [
+        607,
+        3,
+        224,
+        224
+      ],
+      "matched_existing_local_array": true
+    },
+    {
+      "variant": "blacktrim_v1",
+      "sha256": "bec2b951696f64c6f28ba1fe24e746cad9dbaf1d4ab1131e37494165f1aa7e46",
+      "shape": [
+        607,
+        3,
+        224,
+        224
+      ],
+      "matched_existing_local_array": true
+    }
+  ],
+  "new_model_inference": false
+}

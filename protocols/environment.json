@@ -1,0 +1,20 @@
+{
+  "source": "historical blacktrim completed-run state, scientific fields only",
+  "runtime": {
+    "python": "3.11.15",
+    "torch": "2.7.1+cu126",
+    "torchvision": "0.22.1+cu126",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0"
+  },
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "inference_batch_size": 64,
+  "os_family": "Linux (cloud)",
+  "cpu_model": null,
+  "host_ram_gb": null,
+  "nvidia_driver": null,
+  "linux_distribution": null,
+  "peak_gpu_memory_gb": null,
+  "total_study_gpu_hours": null,
+  "unknown_fields": "null means not recovered; do not infer"
+}

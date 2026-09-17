@@ -13,7 +13,7 @@ Holstein uses 324 eligible identities, five folds and three seeds. The headline 
 
 SideView uses the public snapshots subset: 607 input images from 63 identities, with 54 identities and 577 images retained by the six-image minimum. Five nested support draws reserve five images per identity, leaving 307 queries per draw. Four preprocessing variants each contain 675 records (45 models x 5 draws x 3 K). Repeated model/draw observations are not independent animals.
 
-The numeric identifiers in the protocol are image-array indices from the published dataset preprocessing manifest, not globally meaningful filenames. The archive supports count-level verification, not re-decoding original images without the original dataset and corresponding manifest.
+The numeric identifiers in the protocol are image-array indices, not globally meaningful filenames. The corresponding `protocols/sideview_manifest.jsonl` is now included. `scripts/prepare_sideview.py` can rebuild the four input arrays from the official snapshots ZIP; `scripts/score_sideview.py` can run frozen inference after all 45 original checkpoints are supplied. See the bilingual README for commands. These portable adapters do not retroactively establish missing historical execution receipts, and do not provide complete Holstein retraining.
 
 ## Provenance Caveat
 
