@@ -1,5 +1,6 @@
 """以真实汇总和逐模型记录绘制简洁矢量图，不新增评分或推断。"""
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -10,6 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyArrowPatch, Polygon
 from matplotlib.colors import LinearSegmentedColormap
 import pymupdf
+from matplotlib.text import Text
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +36,13 @@ def rows(name):
 
 def save(fig, name):
     """固定最终物理尺寸，保存可编辑及路径化矢量，位图仅供目视检查。"""
+    # 仅变更展示标签，保留CSV方法键与历史权重命名。
+    if name == 'Fig3_holstein_main':
+        fig.subplots_adjust(left=.19)
+        for ax in fig.axes:
+            ax.set_yticks([2, 1, 0], labels=['SupCon-out', 'GAP', 'SupCon-in'])
+    for label in fig.findobj(match=Text):
+        label.set_text(re.sub(r'(?<![A-Za-z0-9])B(?:-selected)?(?![A-Za-z0-9])', 'SupCon-out', label.get_text()))
     fig.canvas.draw()
     # 公开版本不依赖本地技能插件；保持图形定义，保留矢量对象检查。
     fig.savefig(OUT / (name + '.pdf'))
@@ -190,15 +199,20 @@ def quantitative():
 
     fig,ax=plt.subplots(figsize=(6.25,2.5))
     fig.subplots_adjust(left=.27,right=.83,bottom=.15,top=.83)
-    cmap=LinearSegmentedColormap.from_list('accuracy',['#F1F5F7','#A1C5D9','#2878A0'])
+    cmap=LinearSegmentedColormap.from_list('accuracy',['#F0F4F5','#B5CFD5','#76A3AE','#286374'])
     configs=[('baseline','原始 letterbox'),('neutral128','灰背景'),('geomalign_v3','geomalign-v3'),('blacktrim-v1','blacktrim-v1')]
+    # 同一K列内比较四种预处理；最高点标记不表示显著性。
+    maxima={k:max(float(r['micro_accuracy_pct']) for r in data if r['method']=='B' and int(r['K'])==k and r['preprocessing'] in {c[0] for c in configs}) for k in (1,3,5)}
     for i,(pre,label) in enumerate(configs):
         for j,k in enumerate([1,3,5]):
             match=[r for r in data if r['method']=='B' and r['preprocessing']==pre and int(r['K'])==k]
             assert len(match)==1
             val=float(match[0]['micro_accuracy_pct']);color=cmap((val-45)/20)
             ax.add_patch(Rectangle((j-.48,i-.46),.96,.92,fc=color,ec='none'))
-            ax.text(j,i,f'{val:.2f}',ha='center',va='center',fontsize=9,color=INK)
+            best=val==maxima[k]
+            if best:
+                ax.add_patch(Rectangle((j-.46,i-.44),.92,.88,fill=False,ec='#183F4B',lw=1.4))
+            ax.text(j,i,f'{val:.2f}',ha='center',va='center',fontsize=9,color='white' if val>=60 else INK,weight='bold' if best else 'normal')
     ax.set(xlim=(-.5,2.5),ylim=(3.5,-.5),xticks=[0,1,2],xticklabels=['K = 1','K = 3','K = 5'],yticks=range(4),yticklabels=[x[1] for x in configs])
     ax.tick_params(length=0,pad=9);ax.xaxis.tick_top()
     for s in ax.spines.values():s.set_visible(False)
@@ -206,7 +220,7 @@ def quantitative():
     for i in range(100):
         ax.add_patch(Rectangle((3.04,-.46+i*.0392),.14,.04,fc=cmap(1-i/99),ec='none',clip_on=False))
     text(ax,3.28,-.45,'65',7.5);text(ax,3.28,3.45,'45',7.5)
-    fig.text(.54,.04,'B 的微平均准确率 (%)',ha='center',fontsize=8,color=GRAY)
+    fig.text(.54,.035,'SupCon-out：粗体与描框为列内最高点估计，非显著性标记',ha='center',fontsize=7,color=GRAY)
     save(fig,'Fig6_preprocessing')
 
 if __name__=='__main__':

@@ -5,7 +5,7 @@
 1. Run `python scripts/reproduce_results.py` with Python 3.11 or later. This uses only the standard library, verifies file checksums, checks all 2700 SideView scoring records and their 145800 identity-level counts, and recreates 36 micro/macro result pairs.
 2. Run `python -m unittest discover -s tests` to test valid inputs and rejection of corrupted counts and duplicate task keys.
 3. Install `requirements.txt` and run `python scripts/identity_sensitivity.py` for the explicitly post-hoc, conditional identity-resampling analysis.
-4. Run `python scripts/plot_paper_figures.py` to rebuild the six manuscript diagrams/plots as SVG/PDF. A Chinese font such as Microsoft YaHei is needed for Chinese labels. The public plotting adapter removes local absolute dependency paths and the private skill alignment checker, without changing the plot definitions. PNG files generated under `derived/` are only inspection previews.
+4. Run `python scripts/plot_paper_figures.py` to rebuild simplified verification diagrams/plots as SVG/PDF. A Chinese font such as Microsoft YaHei is needed for Chinese labels. The script uses the v9 display name SupCon-out for archived B and highlights Figure 6 column maxima with the teal-gray theme. It does not reproduce the photo-containing final manuscript layouts pixel-for-pixel. Final v9 artwork is archived in `figures/`; the current Word draft and bibliography are linked in `docs/MANUSCRIPT_V9.md`. PNG files generated under `derived/` are only inspection previews. Original code identifiers and experimental values are unchanged.
 
 ## Data and Estimands
 
