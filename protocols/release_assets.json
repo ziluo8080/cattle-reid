@@ -1,0 +1,64 @@
+{
+  "repository": "ziluo8080/cattle-reid",
+  "tag": "reproducibility-v1.2.0",
+  "release_id": 390540547,
+  "uploaded": "2026-09-17",
+  "visibility": "private; owner controlled",
+  "assets": [
+    {
+      "name": "sideview-snapshots.zip",
+      "id": 569808847,
+      "size": 375219777,
+      "sha256": "eb91233dc3423aa8a63b29ebe9d3abd07f3f8db363e3c9cc7c230dabdc002e5c",
+      "extract": false,
+      "license": "CC-BY-4.0",
+      "publisher_checksum": "md5:ac481848da4b9f396bff58583bf85b5e",
+      "url": "https://github.com/ziluo8080/cattle-reid/releases/download/reproducibility-v1.2.0/sideview-snapshots.zip",
+      "server_digest_verified": true
+    },
+    {
+      "name": "holstein-Raw.zip",
+      "id": 569811643,
+      "size": 1713278500,
+      "sha256": "0120d40652f7f1d40811c1bd912cae078e1374a993a9fd5a5aa00ce9b55caf43",
+      "extract": false,
+      "license": "CC0-1.0",
+      "publisher_checksum": "sha1:1035d297d027ecffec91d02a7e35890c1f488dfc",
+      "url": "https://github.com/ziluo8080/cattle-reid/releases/download/reproducibility-v1.2.0/holstein-Raw.zip",
+      "server_digest_verified": true
+    },
+    {
+      "name": "holstein-timestamp.xlsx",
+      "id": 569822358,
+      "size": 161500,
+      "sha256": "73fa0d08aceaee3d9012c6002318538ba847ac6525a916720f86527677e1c2f1",
+      "extract": false,
+      "license": "CC0-1.0",
+      "publisher_checksum": "sha1:aca11d9e587b6a4745d1857dc81853b40b1326c0",
+      "url": "https://github.com/ziluo8080/cattle-reid/releases/download/reproducibility-v1.2.0/holstein-timestamp.xlsx",
+      "server_digest_verified": true
+    },
+    {
+      "name": "cattle-reid-checkpoints-v1.zip",
+      "id": 569822408,
+      "size": 1189058331,
+      "sha256": "a8bb6a36f1ced7fe38c0f1fd196b7c18690f650626098367f132129811c24ca0",
+      "extract": true,
+      "license": "Research checkpoints",
+      "publisher_checksum": null,
+      "url": "https://github.com/ziluo8080/cattle-reid/releases/download/reproducibility-v1.2.0/cattle-reid-checkpoints-v1.zip",
+      "server_digest_verified": true
+    },
+    {
+      "name": "holstein-reference-scores.zip",
+      "id": 569827444,
+      "size": 33135978,
+      "sha256": "a5fa3b21a1de163d66b7fc1d6379f30ae12857a6fac8ba57643d55af08124534",
+      "extract": true,
+      "license": "Research outputs",
+      "publisher_checksum": null,
+      "url": "https://github.com/ziluo8080/cattle-reid/releases/download/reproducibility-v1.2.0/holstein-reference-scores.zip",
+      "server_digest_verified": true
+    }
+  ]
+}

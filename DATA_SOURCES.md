@@ -5,7 +5,7 @@ The study reuses public datasets; the repository owner did not independently col
 - Holstein: *Recognition of Holstein Cattle with Thermal and RGB images*, DOI `10.34894/7M108F`. Obtain original data and applicable terms from its publisher.
 - SideViewCows2026: Sebastian Möller, *SideViewCows2026 - Dairy Cow Re-Identification Dataset*, version DOI `10.5281/zenodo.21605650`. The recorded dataset license is CC BY 4.0. Only its snapshots subset is analyzed.
 
-No original photographs, segmentation masks, ImageNet weights, trained checkpoints, copyrighted article PDFs, author-placeholder manuscripts, access tokens, private session logs or authentication files are included. Public dataset identity codes and numeric split indices are retained to make the count-level protocol inspectable.
+The repository's `reproducibility-v1.2.0` Release now mirrors the original Holstein Raw.zip/timestamp.xlsx (CC0-1.0), SideView snapshots.zip including masks (CC BY 4.0), 45 trained checkpoints and 45 Holstein reference score matrices. See `DATA_LICENSES.md` for attribution and `protocols/release_assets.json` for exact checksums. These large files are Release assets, not ordinary Git history. ImageNet initialization is fetched separately from the official PyTorch distribution. Copyrighted paper PDFs, author-placeholder manuscripts, access tokens, private session logs and authentication files are not distributed.
 
 The repository's existing MIT license is retained for repository-authored code and documentation. It does not change the licenses of third-party datasets, pretrained weights or cited publications. The source DOI records remain the authoritative locations for original images and terms.
 

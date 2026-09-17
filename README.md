@@ -4,6 +4,8 @@
 
 Code, protocols and historical results for Holstein full-candidate recognition and exploratory frozen-model transfer to SideViewCows2026. This is a research reproducibility archive, not a pretrained application. Repository visibility is controlled by its owner; the repository is currently private.
 
+**New: datasets and all 45 frozen weights are now attached to the [reproduction asset release](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0). Start with the [clean-checkout, end-to-end instructions](docs/END_TO_END.md): download, checksum, reconstruct inputs, replay reference scores, run frozen inference, or retrain.**
+
 ## 1. Start Here: What Can Be Reproduced?
 
 | Level | Available now | Additional requirements |
@@ -11,10 +13,10 @@ Code, protocols and historical results for Holstein full-candidate recognition a
 | Historical result verification | All four SideView count files; Holstein model-level summaries; checksum verifier | Python 3.11+; CPU only |
 | Conditional sensitivity analysis and six vector figures | Executable scripts, fixed analysis plan and source tables | NumPy, plotting dependencies and a Chinese font |
 | SideView image preprocessing | Portable entry point for all four variants; original image manifest | Official `snapshots.zip`, including masks for gray background and geomalign |
-| Frozen SideView inference | Portable scorer, fixed task indices, 45 checkpoint hashes | **The 45 original checkpoint files are not included**; CUDA environment |
-| Complete Holstein retraining and rescoring | Verified configuration, cohort/split tables and historical training source excerpts | **Not yet a standalone runnable pipeline**; training task materialization, complete dependencies, checkpoint assets and evaluation artifacts remain necessary |
+| Frozen SideView inference | Portable scorer, fixed task indices and 45 original checkpoints in Release | Download/extract assets; CUDA environment |
+| Holstein retraining and rescoring | Standalone launcher, actual task definitions, initialization downloader, data, weights and original score matrices | Follow the end-to-end guide; full 45-model retraining was not rerun during packaging |
 
-Do not interpret the first two rows as end-to-end experimental reproduction. Portable adapters are newly packaged code; they do not replace historical execution receipts. No training or historical model rescoring was performed to prepare this archive.
+Do not interpret count verification as end-to-end experimental reproduction. Portable adapters are newly packaged code; they do not replace historical execution receipts. One B/fold0/seed17 frozen Holstein inference check was run during packaging and reproduced its historical Rank-1/Rank-5. Full 45-model retraining was not performed.
 
 ## 2. Software and Compute
 
@@ -36,7 +38,7 @@ Exact CPU model, host RAM, NVIDIA driver, Linux distribution, peak GPU memory an
 
 Training uses 630 updates/model, 60 image inputs/update, 15 models/method and 3 methods: **28,350 updates and 1,701,000 training image presentations**, excluding validation, checkpoint verification and replay. These are operation counts, not unique photographs or measured GPU-hours. See [per-model consumption](tables/training_consumption_45.csv).
 
-One SideView variant embeds 607 images with each of 45 models: 27,315 image forward passes. Five draws and three K values reuse these embeddings. Four variants correspond to 109,260 image passes if run once each; historical retries/replays are not included in that arithmetic. A uint8 input cache occupies approximately 91.4 MB. All 45 locally located checkpoint files total approximately 1.28 GB; they are not stored in this Git repository.
+One SideView variant embeds 607 images with each of 45 models: 27,315 image forward passes. Five draws and three K values reuse these embeddings. Four variants correspond to 109,260 image passes if run once each; historical retries/replays are not included in that arithmetic. A uint8 input cache occupies approximately 91.4 MB. All 45 checkpoint files total approximately 1.28 GB before compression; they are stored as a Release attachment rather than ordinary Git history.
 
 ### Installation
 
@@ -65,7 +67,7 @@ The historical versions above are recorded experimental versions. Plotting versi
 
 ## 3. Reproduce Published Tables and Figures Offline
 
-From the repository root:
+From the repository root (the full test suite now requires the PyTorch environment):
 
 ```bash
 python scripts/reproduce_results.py
@@ -81,7 +83,7 @@ python scripts/plot_paper_figures.py
 
 ## 4. Data Acquisition and Layout
 
-Obtain original data from the dataset publishers, following [DATA_SOURCES.md](DATA_SOURCES.md):
+Use the repository's Release mirrors or the original publishers, following [DATA_SOURCES.md](DATA_SOURCES.md) and [DATA_LICENSES.md](DATA_LICENSES.md). Mirrored archive bytes were checked against publisher checksums:
 
 - Holstein: *Recognition of Holstein Cattle with Thermal and RGB images*, DOI `10.34894/7M108F`. This manuscript uses RGB, not a thermal/RGB fusion experiment.
 - SideViewCows2026: *SideViewCows2026 - Dairy Cow Re-Identification Dataset*, version DOI `10.5281/zenodo.21605650`. Only `snapshots.zip` is needed for the archived experiment, not a newly selected parlor-to-snapshots protocol.
@@ -93,7 +95,7 @@ snapshots/images/<identity>/<image>.jpg
 snapshots/masks/<identity>/<image>.png
 ```
 
-`protocols/sideview_manifest.jsonl` binds every index to an image filename, identity and source SHA256. Keep its order: the task protocol uses integer array indices. `protocols/holstein_manifest.csv` contains original RGB path/hash metadata; `tables/holstein_actual_split_1620.csv` records the actual fold assignments. Source images/masks are not redistributed.
+`protocols/sideview_manifest.jsonl` binds every index to an image filename, identity and source SHA256. Keep its order: the task protocol uses integer array indices. `protocols/holstein_manifest.csv` contains original RGB path/hash metadata; `tables/holstein_actual_split_1620.csv` records the actual fold assignments. Source images/masks are distributed in the licensed original Release archives, not as individual Git files.
 
 ## 5. Image Preprocessing
 
@@ -125,7 +127,7 @@ Replace `/path/to/snapshots.zip` with your file. Output directories must not exi
 
 The methods use a DenseNet-121 feature extractor, spatial mean pooling and a 1024-dimensional L2-normalized embedding. Their trained weights differ. BatchNorm uses stored running statistics at inference. The classifier is absent.
 
-Place the **original raw state-dict** checkpoints in a separate directory, named exactly as `protocols/models.json`, for example `B-fold0-seed17.pt`, `GAP-fold0-seed17.pt`, `SupCon-in-fold0-seed17.pt`. The roster contains 45 SHA256 hashes and selected epochs. Do not substitute ImageNet weights or guess the format; `strict=True` loading and hashes reject substitutions. Checkpoints are a remaining distribution dependency, not downloadable assets in this release.
+Download and extract `cattle-reid-checkpoints-v1.zip` from Release. The **original raw state-dict** checkpoints are named exactly as `protocols/models.json`, for example `B-fold0-seed17.pt`, `GAP-fold0-seed17.pt`, `SupCon-in-fold0-seed17.pt`. The roster contains 45 SHA256 hashes and selected epochs. Do not substitute ImageNet weights or guess the format; `strict=True` loading and hashes reject substitutions.
 
 ```bash
 python scripts/score_sideview.py --input derived/inputs/neutral128 --weights /path/to/checkpoints --output derived/inference/neutral128 --check-only
@@ -155,7 +157,7 @@ SideView has 607 images/63 identities before eligibility filtering, 54 identitie
 | Checkpoint selection | Highest validation identity-macro Rank-1 at K=5 among epochs 0..30; earliest tie |
 | Selection boundary | Validation 10-way tasks; post-selection full-validation check does not reselect |
 
-Read the actual source excerpts for B/GAP/SupCon-in rather than treating their labels as interchangeable loss definitions. `reference_training/` is evidence, not a complete installable training package. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for unclosed dependencies and caveats.
+Read the actual source for B/GAP/SupCon-in rather than treating their labels as interchangeable loss definitions. `reference_training/` preserves evidence; `src/cattle_reid_repro/` and `scripts/holstein.py` provide the standalone computation. See [end-to-end commands](docs/END_TO_END.md) and [verification boundaries](docs/REPRODUCTION_STATUS.md).
 
 ## 8. Reference Results
 

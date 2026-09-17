@@ -4,6 +4,8 @@
 
 本仓库整理 Holstein 完整候选识别及 SideViewCows2026 冻结模型迁移实验的代码、协议和历史结果。它是科研复现材料库，不是开箱即用的识别产品。目前仓库为 **private**，可见性由所有者自行管理。
 
+**新增：实际使用的数据包和全部45个冻结权重已上传至[复现附件Release](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0)。请优先阅读[从全新克隆到训练/评分的完整操作说明](docs/END_TO_END.zh-CN.md)，包含下载、校验、输入重建、历史矩阵重放、冻结评分及重新训练命令。**
+
 ## 1. 先看复现范围
 
 | 复现层级 | 已提供 | 还需要什么 |
@@ -11,10 +13,10 @@
 | 历史结果核验 | SideView四种预处理计数、Holstein逐模型汇总、文件哈希与复算脚本 | Python 3.11以上，普通CPU即可 |
 | 敏感性分析与论文图 | 固定分析方案、统计脚本、六幅矢量图的绘图源码与数据 | NumPy、绘图依赖、中文字体 |
 | SideView原图预处理 | 四种处理的可移植命令行入口、607张原图清单 | 官方`snapshots.zip`；灰背景和geomalign需要其中的掩码 |
-| SideView冻结模型评分 | 推理入口、固定支持/查询索引、45个权重的SHA256 | **目前仓库没有权重文件本体**；另需CUDA环境 |
-| Holstein完整重训与重评分 | 经核验的训练配置、实际划分和历史训练源码片段 | **目前还不是独立可运行的完整训练工程**；仍需完整任务物化流程、依赖模块、权重及评估工件 |
+| SideView冻结模型评分 | 推理入口、固定索引、Release中的45个原始权重 | 下载并解压附件；CUDA环境 |
+| Holstein重训与重评分 | 独立运行入口、实际任务、初始化下载器、数据、权重及原始评分矩阵 | 按完整操作说明执行；本次未再次运行45模型全量重训 |
 
-“指标可以复算”不等于“所有模型可以从零复训”。新包装的可移植入口不冒充历史原始运行记录。本次整理没有训练模型，也没有重新评分来替换历史结果。
+“指标可以复算”不等于“完整重复实验已被验证”。新包装的可移植入口不冒充历史原始运行记录。本次对B/fold0/seed17进行了冻结推理检查，其Rank-1/Rank-5与历史结果一致，未替换历史结果，也未运行45模型全量重训。
 
 ## 2. 算力和软件版本
 
@@ -36,7 +38,7 @@ CPU型号、主机内存、驱动版本、Linux发行版、峰值显存和完整
 
 训练预算：每个模型630次更新，每次60张图像输入，每种方法15个模型，共三种方法，即 **28,350次更新、1,701,000次训练图像呈现**。不包括验证、检查点核验及重放；不能将其理解成独立图像数量或实测GPU小时数。逐模型记录见[训练消费表](tables/training_consumption_45.csv)。
 
-SideView每种预处理包含607张图像，每个模型只提取一遍embedding。45个模型合计27,315次图像前向，五个draw和三个K复用这些embedding。四种处理各跑一次对应109,260次图像前向，不包括历史重试与重放。单份uint8缓存约91.4 MB。本地已定位的45个权重合计约1.28 GB，目前不在普通Git历史中。
+SideView每种预处理包含607张图像，每个模型只提取一遍embedding。45个模型合计27,315次图像前向，五个draw和三个K复用这些embedding。四种处理各跑一次对应109,260次图像前向，不包括历史重试与重放。单份uint8缓存约91.4 MB。45个权重解压后约1.28 GB，已作为Release附件提供，不写入普通Git历史。
 
 ### 安装环境
 
@@ -65,7 +67,7 @@ python -c "import torch, torchvision, numpy, PIL; print(torch.__version__, torch
 
 ## 3. 离线复算表格和重画论文图
 
-在仓库根目录执行：
+在仓库根目录执行（完整测试现需安装PyTorch环境）：
 
 ```bash
 python scripts/reproduce_results.py
@@ -81,7 +83,7 @@ python scripts/plot_paper_figures.py
 
 ## 4. 数据获取与目录
 
-原始图像应从发布者处获取并遵守其许可，详见[数据来源说明](DATA_SOURCES.md)。
+可以从本仓库Release镜像或原发布者获取，遵守[数据署名与许可](DATA_LICENSES.md)和[来源说明](DATA_SOURCES.md)。镜像包均与发布者提供的校验值核对一致。
 
 - Holstein：*Recognition of Holstein Cattle with Thermal and RGB images*，DOI `10.34894/7M108F`。本稿使用RGB，不是热红外/RGB融合实验。
 - SideViewCows2026：*SideViewCows2026 - Dairy Cow Re-Identification Dataset*，版本DOI `10.5281/zenodo.21605650`。本归档实验仅用`snapshots.zip`，不要换成另一个parlor到snapshots的新协议。
@@ -93,7 +95,7 @@ snapshots/images/<identity>/<image>.jpg
 snapshots/masks/<identity>/<image>.png
 ```
 
-`protocols/sideview_manifest.jsonl`将每个数组索引绑定到图像文件名、身份和原始文件SHA256。评分协议保存的是数组索引，**不能重新排序清单**。`protocols/holstein_manifest.csv`包含Holstein原始RGB路径和哈希；`tables/holstein_actual_split_1620.csv`记录实际fold划分。本仓库不重复分发第三方原图和掩码。
+`protocols/sideview_manifest.jsonl`将每个数组索引绑定到图像文件名、身份和原始文件SHA256。评分协议保存的是数组索引，**不能重新排序清单**。`protocols/holstein_manifest.csv`包含Holstein原始RGB路径和哈希；`tables/holstein_actual_split_1620.csv`记录实际fold划分。原图和掩码按许可保留在Release原始压缩包中，不逐图写入Git历史。
 
 ## 5. 图像预处理
 
@@ -125,7 +127,7 @@ python scripts/prepare_sideview.py --zip /path/to/snapshots.zip --variant blackt
 
 三方法使用DenseNet-121卷积特征、空间均值池化和1024维L2归一化embedding，但训练权重不同。推理时使用BatchNorm已保存的统计量，不包含分类器。
 
-将45个**原始state-dict权重**放到独立目录，按照`protocols/models.json`中的文件名命名，例如`B-fold0-seed17.pt`、`GAP-fold0-seed17.pt`、`SupCon-in-fold0-seed17.pt`。清单包含SHA256和selected epoch。不允许换成ImageNet初始化或猜测权重格式；入口严格校验哈希并使用`strict=True`加载。当前权重仍是分发依赖，不能假设克隆仓库后已经下载到。
+下载并解压Release中的`cattle-reid-checkpoints-v1.zip`，其中45个**原始state-dict权重**已经按照`protocols/models.json`命名，例如`B-fold0-seed17.pt`、`GAP-fold0-seed17.pt`、`SupCon-in-fold0-seed17.pt`。清单包含SHA256和selected epoch。不允许换成ImageNet初始化或猜测格式；入口严格校验哈希并使用`strict=True`加载。单独克隆Git代码不会自动下载附件，请先执行附件下载步骤。
 
 ```bash
 python scripts/score_sideview.py --input derived/inputs/neutral128 --weights /path/to/checkpoints --output derived/inference/neutral128 --check-only
@@ -155,7 +157,7 @@ SideView初始607图/63身份，要求每身份至少6图后保留577图/54身�
 | 选模 | epoch0到30中验证K=5身份宏Rank-1最高者，同分取最早 |
 | 选模边界 | 验证使用10-way任务；选模后的完整验证检查不重新选模 |
 
-不要把B/GAP/SupCon-in当作可互换的损失名。`reference_training/`保留具体定义和历史入口，但其依赖还不是完整安装包。未关闭的复现边界见[REPRODUCIBILITY.md](REPRODUCIBILITY.md)。
+不要把B/GAP/SupCon-in当作可互换的损失名。`reference_training/`保留历史证据，`src/cattle_reid_repro/`与`scripts/holstein.py`提供独立运行的实际计算。见[完整运行命令](docs/END_TO_END.zh-CN.md)和[验证边界](docs/REPRODUCTION_STATUS.md)。
 
 ## 8. 对照结果
 

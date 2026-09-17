@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-17",
+  "runtime": {
+    "python": "3.11.15",
+    "torch": "2.7.1+cu126",
+    "torchvision": "0.22.1+cu126",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0",
+    "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU"
+  },
+  "unit_tests": 14,
+  "holstein_original_input_arrays_exact": true,
+  "training_epoch_hashes_verified": 450,
+  "validation_plans_verified": 5,
+  "holstein_reference_score_matrices_verified": 45,
+  "sideview_preprocessing_arrays_exact": 4,
+  "checkpoint_hashes_verified": 45,
+  "release_assets_verified": 5,
+  "training_preflight_passed": true,
+  "new_training_updates": 0,
+  "holstein_frozen_gpu_integration": {
+    "method": "B",
+    "fold": 0,
+    "seed": 17,
+    "score_shape": [
+      3090,
+      65
+    ],
+    "max_absolute_score_difference": 0,
+    "top1_disagreements": 0,
+    "rank1": 0.8310679611650486,
+    "rank5": 0.9902912621359223
+  },
+  "full_45_model_retraining_performed": false,
+  "full_new_45_model_inference_performed": false
+}

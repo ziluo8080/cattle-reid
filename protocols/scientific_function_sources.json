@@ -1,0 +1,56 @@
+[
+  {
+    "source": "controlled_adapter_design.py",
+    "function": "ordered",
+    "source_file_sha256": "ce43a13b7fdbf14c9aa0595de83e2842ca421e8a0b2c32e219adf734ae96aa91",
+    "function_utf8_sha256": "c33671ca61f2d07351c70e4d27e8fce8836b0679c38f69bde08cc3889c2a754a"
+  },
+  {
+    "source": "controlled_adapter_tasks.py",
+    "function": "_pool",
+    "source_file_sha256": "c4922a6681e5d0b5a09cc19febb6563965212301b9019ca66cbc8691e43a11e3",
+    "function_utf8_sha256": "fd79a6d71337d249446d544630e3594fbb0e3bc0c7edf1602e07f39b8aa8d7c3"
+  },
+  {
+    "source": "controlled_adapter_tasks.py",
+    "function": "training_epoch",
+    "source_file_sha256": "c4922a6681e5d0b5a09cc19febb6563965212301b9019ca66cbc8691e43a11e3",
+    "function_utf8_sha256": "2cb4c218f477f0c210f3bfa25a0b47103e3c4b45f9307930dbda932528f36c1d"
+  },
+  {
+    "source": "controlled_adapter_tasks.py",
+    "function": "validation_tasks",
+    "source_file_sha256": "c4922a6681e5d0b5a09cc19febb6563965212301b9019ca66cbc8691e43a11e3",
+    "function_utf8_sha256": "a4d78a17e30881419bcea040a33d0762a5d831c69eb493ddbca8b1470e9aa496"
+  },
+  {
+    "source": "controlled_adapter_training.py",
+    "function": "learning_rate",
+    "source_file_sha256": "356ccbc4ec378bbf41db7f09ce37eef3b83c194b5a8f5e87e1b85260a07fa532",
+    "function_utf8_sha256": "eaab41f85492df9beb410123ea73b7f5b2cb7ba0d2840fe366dae14d1769f4d4"
+  },
+  {
+    "source": "controlled_adapter_training.py",
+    "function": "macro_rank1",
+    "source_file_sha256": "356ccbc4ec378bbf41db7f09ce37eef3b83c194b5a8f5e87e1b85260a07fa532",
+    "function_utf8_sha256": "7d3f63bf7dad8143194061adade8f4306760c849e96d9459b0a87055364af45c"
+  },
+  {
+    "source": "controlled_adapter_epochs.py",
+    "function": "validation_summary",
+    "source_file_sha256": "4a231afb8b3f3f10cbbbecea41adf5e0378bae9157b1bcdfe875da3082b3b088",
+    "function_utf8_sha256": "4005aec5030f9ff2f85d271afbe3c663a84222813a6ef4ff19ebc4bc27481e2d"
+  },
+  {
+    "source": "animals_supplement.py",
+    "function": "score_tasks",
+    "source_file_sha256": "528eee51e3d25847dec539dd8efa6cd47e2f8e48319bb325f672edc47c19b82b",
+    "function_utf8_sha256": "a1f6a59467d7a3b441cd2f98abb1991284dfb7a7d1723e238a907df4ce9a4cd2"
+  },
+  {
+    "source": "animals_supplement.py",
+    "function": "rank_metrics",
+    "source_file_sha256": "528eee51e3d25847dec539dd8efa6cd47e2f8e48319bb325f672edc47c19b82b",
+    "function_utf8_sha256": "c026c3afd37a56469053eec0f5c4fd192d68e763cb4d440b3da14dc6d4b362be"
+  }
+]

@@ -23,7 +23,9 @@ def digest(path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path, required=True)
-    parser.add_argument('--weights', type=Path, required=True)
+    weights = parser.add_mutually_exclusive_group(required=True)
+    weights.add_argument('--weights', type=Path)
+    weights.add_argument('--trained-root', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args()
@@ -31,9 +33,17 @@ def main():
         raise FileExistsError('Use a fresh output directory')
     roster = json.loads((ROOT/'protocols/models.json').read_text())
     for item in roster:
-        path = args.weights/item['file']
-        if digest(path) != item['sha256']:
+        if args.trained_root is not None:
+            job = args.trained_root/f"{item['method']}-fold{item['fold']}-seed{item['seed']}"
+            completion = json.loads((job/'completion.json').read_text())
+            if any(completion[k] != item[k] for k in ('method','fold','seed')) or completion['updates'] != 630:
+                raise ValueError('Retraining completion mismatch')
+            path, expected = job/'selected.pt', completion['selected_sha256']
+        else:
+            path, expected = args.weights/item['file'], item['sha256']
+        if digest(path) != expected:
             raise ValueError('Weight SHA256 mismatch: ' + item['file'])
+        item['checkpoint'], item['loaded_sha256'] = path, expected
     receipt = json.loads((args.input/'processing_receipt.json').read_text())
     array_path = args.input/'images_uint8.npy'
     if digest(array_path) != receipt['array_sha256']:
@@ -52,27 +62,18 @@ def main():
         print('PASS: 45 checkpoint hashes, input receipt and support/query protocol')
         return
     import torch
-    from torchvision.models import densenet121
+    sys.path.insert(0, str(ROOT/'src'))
+    from cattle_reid_repro.strong_rgb_densenet import DenseRGB
     if not torch.cuda.is_available():
         raise RuntimeError('CUDA required; no silent CPU fallback')
-
-    class Encoder(torch.nn.Module):
-        """与历史DenseRGB推理结构一致；严格加载features键，禁止自动下载权重。"""
-        def __init__(self):
-            super().__init__()
-            self.features = densenet121(weights=None, drop_rate=0).features
-
-        def forward(self, x):
-            x = torch.nn.functional.adaptive_avg_pool2d(torch.relu(self.features(x)), 1).flatten(1)
-            return torch.nn.functional.normalize(x, dim=1)
 
     args.output.mkdir(parents=True)
     mean = torch.tensor([.485, .456, .406], device='cuda')[None, :, None, None]
     std = torch.tensor([.229, .224, .225], device='cuda')[None, :, None, None]
     results = []
     for item in roster:
-        model = Encoder().eval().cuda().requires_grad_(False)
-        model.load_state_dict(torch.load(args.weights/item['file'], map_location='cpu', weights_only=True), strict=True)
+        model = DenseRGB().eval().cuda().requires_grad_(False)
+        model.load_state_dict(torch.load(item['checkpoint'], map_location='cpu', weights_only=True), strict=True)
         chunks = []
         with torch.inference_mode():
             for start in range(0, len(arr), 64):
@@ -90,6 +91,8 @@ def main():
     payload = {'preprocessing': receipt['variant'], 'models': 45, 'training': False,
                'protocol_sha256': '25e97cb13bc6a88a69d8dc7914049bb384eff898de5e499a8128d7e6c6f1dab3',
                'input_sha256': receipt['array_sha256'], 'results': results,
+               'weights_source': 'portable_retraining' if args.trained_root else 'historical_frozen',
+               'checkpoint_sha256': {r['file']: r['loaded_sha256'] for r in roster},
                'runner': 'portable adapter; not the original runtime receipt',
                'torch': torch.__version__, 'gpu': torch.cuda.get_device_name(0)}
     (args.output/'results.json').write_text(json.dumps(payload, indent=2)+'\n', encoding='utf-8')
