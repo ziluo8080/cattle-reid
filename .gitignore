@@ -10,5 +10,6 @@ __pycache__/
 *.jpeg
 *.png
 derived/
-data/
+data/*
+!data/README.md
 weights/

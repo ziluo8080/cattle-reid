@@ -8,6 +8,16 @@
 
 ## 1. 先看复现范围
 
+### 数据集在哪里？
+
+请进入 **[data/README.md 数据入口](data/README.md)**。原始数据与权重存放在本仓库的 **[Release附件](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0)** 中，包括Holstein原始包/时间戳及本实验使用的SideView snapshots图像/掩码，不逐个写入Git代码目录。仅克隆仓库不会自动下载；正常登录GitHub官方CLI后，在仓库根目录执行：
+
+```bash
+python scripts/fetch_assets.py --output data/assets --extract
+```
+
+数据会下载到`data/assets/`，权重解压到`data/assets/checkpoints/`，参考分数解压到`data/assets/holstein-reference-scores/`。五个附件合计约3.31 GB。仓库只跟踪数据说明文件，下载的大文件仍被Git忽略。私有仓库需要访问权限；手动下载及离线校验方法见数据入口说明。
+
 | 复现层级 | 已提供 | 还需要什么 |
 | --- | --- | --- |
 | 历史结果核验 | SideView四种预处理计数、Holstein逐模型汇总、文件哈希与复算脚本 | Python 3.11以上，普通CPU即可 |

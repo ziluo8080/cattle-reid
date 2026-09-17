@@ -8,6 +8,16 @@ Code, protocols and historical results for Holstein full-candidate recognition a
 
 ## 1. Start Here: What Can Be Reproduced?
 
+### Where are the datasets?
+
+Open **[data/README.md](data/README.md)** for the dataset entry point. Original data and weights are in this repository's **[Release attachments](https://github.com/ziluo8080/cattle-reid/releases/tag/reproducibility-v1.2.0)**, not individual Git files. They include Holstein Raw/timestamps and the SideView snapshots images/masks used in this experiment. Cloning alone does not download them; after authenticating the GitHub CLI, run from the repository root:
+
+```bash
+python scripts/fetch_assets.py --output data/assets --extract
+```
+
+Files are downloaded to `data/assets/`, with weights in `data/assets/checkpoints/` and reference scores in `data/assets/holstein-reference-scores/`. The five attachments total approximately 3.31 GB. Only the data README is tracked; downloaded files are ignored. Private-repository access is required. Manual download and offline verification instructions are provided in the data README.
+
 | Level | Available now | Additional requirements |
 | --- | --- | --- |
 | Historical result verification | All four SideView count files; Holstein model-level summaries; checksum verifier | Python 3.11+; CPU only |
